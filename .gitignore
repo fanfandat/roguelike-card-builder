@@ -1,0 +1,42 @@
+# This file is used to ignore files which are generated
+# We want to ignore all files by default
+*
+
+# But not these files (this pattern is a negate pattern)
+!.gitignore
+!Assets/
+!ProjectSettings/
+!Packages/
+!README.md
+!.github/
+
+# Ignore all meta files in the root
+*.meta
+
+# But do track meta files in Assets
+!Assets/**/*.meta
+!ProjectSettings/**/*.meta
+!Packages/**/*.meta
+
+# Ignore obj and bin folders
+[Oo]bj/
+[Bb]in/
+
+# Ignore Builds
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
