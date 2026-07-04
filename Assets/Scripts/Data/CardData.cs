@@ -8,6 +8,7 @@ public class CardData : ScriptableObject
     [SerializeField] public string description;
     [SerializeField] public int cost; // Mana/energy cost
     [SerializeField] public CardType cardType;
+    [SerializeField] public CharacterClass characterClass; // NEW: Class restriction
     [SerializeField] public Sprite cardArt;
 
     // Card effects (simple version - expandable)
@@ -25,6 +26,13 @@ public class CardData : ScriptableObject
         Defense,
         Utility,
         Special
+    }
+
+    public enum CharacterClass
+    {
+        Fighter,
+        Mage,
+        Healer
     }
 
     public enum Rarity

@@ -33,19 +33,27 @@ public class CardSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// Get a random card from the pool (respecting rarity distribution)
+    /// Get a random card from the pool for a specific class (respecting rarity distribution)
     /// </summary>
-    public CardData GetRandomCard(CardData.Rarity maxRarity = CardData.Rarity.Legendary)
+    public CardData GetRandomCard(CardData.CharacterClass characterClass, CardData.Rarity maxRarity = CardData.Rarity.Legendary)
     {
-        var validCards = allCards.Where(c => (int)c.rarity <= (int)maxRarity).ToList();
+        var validCards = allCards.Where(c => c.characterClass == characterClass && (int)c.rarity <= (int)maxRarity).ToList();
         return validCards.Count > 0 ? validCards[Random.Range(0, validCards.Count)] : null;
     }
 
     /// <summary>
-    /// Get cards by type
+    /// Get cards by type and class
     /// </summary>
-    public List<CardData> GetCardsByType(CardData.CardType type)
+    public List<CardData> GetCardsByType(CardData.CardType type, CardData.CharacterClass characterClass)
     {
-        return allCards.Where(c => c.cardType == type).ToList();
+        return allCards.Where(c => c.cardType == type && c.characterClass == characterClass).ToList();
+    }
+
+    /// <summary>
+    /// Get all cards for a specific class
+    /// </summary>
+    public List<CardData> GetCardsByClass(CardData.CharacterClass characterClass)
+    {
+        return allCards.Where(c => c.characterClass == characterClass).ToList();
     }
 }

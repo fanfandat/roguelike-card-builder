@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG ! tag:yaml.org,2002:yaml
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 1a2b3c4d5e6f7g8h9i0j1k2l, type: 3}
+  m_Name: Card_Mage_ManaShield
+  m_EditorClassIdentifier: 
+  cardName: Mana Shield
+  description: Gain 6 armor
+  cost: 1
+  cardType: 1
+  characterClass: 1
+  cardArt: {fileID: 0}
+  damageDealt: 0
+  hpRestored: 0
+  armorGained: 6
+  energyGained: 0
+  rarity: 0
