@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG ! tag:yaml.org,2002:yaml
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 2b3c4d5e6f7g8h9i0j1k2l3m, type: 3}
+  m_Name: Enemy_Bandit
+  m_EditorClassIdentifier: 
+  enemyName: Bandit
+  maxHP: 15
+  baseDamage: 0
+  armor: 0
+  enemySprite: {fileID: 0}
+  behavior: 2
