@@ -1,11 +1,13 @@
 using UnityEngine;
 
+/// <summary>
+/// Core game manager that coordinates global systems and phase transitions.
+/// Only handles game state changes and pause logic.
+/// Scene-specific initialization is handled by scene managers (e.g., CombatTestSceneManager).
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
-    [SerializeField] private CombatSystem combatSystem;
-    [SerializeField] private UIManager uiManager;
 
     private void Awake()
     {
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -29,6 +32,9 @@ public class GameManager : MonoBehaviour
         GameState.OnPhaseChanged -= HandlePhaseChange;
     }
 
+    /// <summary>
+    /// Handle game phase transitions
+    /// </summary>
     private void HandlePhaseChange(GamePhase newPhase)
     {
         Debug.Log($"Game phase changed to: {newPhase}");
@@ -36,30 +42,24 @@ public class GameManager : MonoBehaviour
         switch (newPhase)
         {
             case GamePhase.MainMenu:
-                // Load main menu
+                // Load main menu scene
                 break;
             case GamePhase.CombatPrep:
-                // Prepare combat scene
+                // Prepare for combat (load combat scene)
                 break;
             case GamePhase.Combat:
-                // Start combat
-                if (combatSystem != null)
-                    combatSystem.StartCombat();
-                break;
             case GamePhase.Combat_PlayerTurn:
-                // Player's turn
-                break;
             case GamePhase.Combat_EnemyTurn:
-                // Enemy's turn
+                // Combat phases - handled by CombatSystem
                 break;
             case GamePhase.CombatReward:
-                // Show rewards
+                // Show card reward screen
                 break;
             case GamePhase.BaseHub:
                 // Load base building scene
                 break;
             case GamePhase.RunComplete:
-                // Run completed
+                // Run completed - show summary
                 break;
             case GamePhase.GameOver:
                 // Game over screen
@@ -67,6 +67,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Pause or resume the game
+    /// </summary>
     public void PauseGame(bool pause)
     {
         Time.timeScale = pause ? 0f : 1f;
